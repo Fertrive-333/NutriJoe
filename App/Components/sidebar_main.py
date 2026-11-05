@@ -6,9 +6,9 @@ from PySide6.QtWidgets import (
     QLabel,
     QFrame
 )
-
+from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Signal, Qt
-
+path_logo = "App/Images/logo_joe.png"
 
 class Sidebar(QWidget):
 
@@ -25,7 +25,7 @@ class Sidebar(QWidget):
 
         # Layout principal
         self.layout = QVBoxLayout(self)
-        self.layout.setContentsMargins(12, 20, 12, 20)
+        self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setSpacing(6)
 
         # LOGOTIPO Y NOMBRE
@@ -42,7 +42,6 @@ class Sidebar(QWidget):
         # MENÚ PRINCIPAL
         self.add_section_title("MENÚ PRINCIPAL")
 
-        self.add_menu_button("Dashboard", "dashboard", "⌂")
         self.add_menu_button("Pacientes", "patients", "♙")
         self.add_menu_button("Alimentos", "foods", "◈")
         self.add_menu_button("Dietas", "diets", "▤")
@@ -60,8 +59,6 @@ class Sidebar(QWidget):
         # CONFIGURACIÓN
         self.add_menu_button("Configuración", "settings", "⚙")
 
-        # Seleccionar Dashboard inicialmente
-        self.select_button("dashboard")
 
     def create_header(self):
 
@@ -69,13 +66,16 @@ class Sidebar(QWidget):
         header.setObjectName("SidebarHeader")
 
         header_layout = QVBoxLayout(header)
-        header_layout.setContentsMargins(12, 10, 12, 20)
-        header_layout.setSpacing(4)
+        header_layout.setContentsMargins(0, 0, 0, 0)
+        header_layout.setSpacing(0)
 
-        logo = QLabel("N")
+        logo = QLabel()
         logo.setObjectName("SidebarLogo")
         logo.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        logo.setFixedSize(42, 42)
+        logo.setFixedSize(250, 100)
+
+        logo.setPixmap(QPixmap(path_logo))
+        logo.setScaledContents(True)
 
         name = QLabel("NutriJoe")
         name.setObjectName("SidebarBrand")
