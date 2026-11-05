@@ -15,7 +15,7 @@ from PySide6.QtCore import Signal, Qt
 from App.Translations.translator import Translator
 
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 path_logo = BASE_DIR / "Images" / "logo_joe.png"
 
 

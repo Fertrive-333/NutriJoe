@@ -1,6 +1,6 @@
 
 /* ==========================================
-   NUTRIJOE - MAIN STYLESHEET
+   NUTRIJOE - CARTOON BLACK & WHITE THEME
 ========================================== */
 
 
@@ -11,11 +11,11 @@
 QWidget {
     font-family: "Segoe UI";
     font-size: 14px;
-    color: #263445;
+    color: #111111;
 }
 
 QMainWindow {
-    background-color: #1263dc;
+    background-color: #f5f5f5;
 }
 
 
@@ -24,9 +24,11 @@ QMainWindow {
 ========================================== */
 
 QWidget#Sidebar {
-    background-color: #17212b;
+    background-color: #ffffff;
     min-width: 250px;
     max-width: 250px;
+
+    border-right: 3px solid #111111;
 }
 
 
@@ -39,21 +41,20 @@ QWidget#SidebarHeader {
 }
 
 QLabel#SidebarLogo {
-    background-color: #36b37e;
-    color: white;
-    border-radius: 12px;
-    font-size: 24px;
-    font-weight: bold;
+    background-color: transparent;
+    color: #111111;
+    border: none;
+    border-radius: 0px;
 }
 
 QLabel#SidebarBrand {
-    color: #f82020;
-    font-size: 24px;
-    font-weight: bold;
+    color: #111111;
+    font-size: 25px;
+    font-weight: 900;
 }
 
 QLabel#SidebarSubtitle {
-    color: #8493a3;
+    color: #555555;
     font-size: 9px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -65,9 +66,9 @@ QLabel#SidebarSubtitle {
 ========================================== */
 
 QFrame#SidebarSeparator {
-    background-color: #2b3947;
+    background-color: #111111;
     border: none;
-    max-height: 1px;
+    max-height: 2px;
 }
 
 
@@ -76,11 +77,12 @@ QFrame#SidebarSeparator {
 ========================================== */
 
 QLabel#SidebarSectionTitle {
-    color: #718096;
+    color: #777777;
     font-size: 10px;
-    font-weight: bold;
+    font-weight: 900;
+
     padding: 8px 12px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 
@@ -89,42 +91,78 @@ QLabel#SidebarSectionTitle {
 ========================================== */
 
 QPushButton#SidebarButton {
-    background-color: transparent;
-    color: #2e78c7;
+    background-color: #ffffff;
+    color: #111111;
 
-    border: none;
-    border-radius: 8px;
+    border: 2px solid transparent;
+    border-radius: 10px;
 
-    padding: 13px 14px;
+    padding: 12px 14px;
 
     text-align: left;
     font-size: 14px;
-    font-weight: 500;
-}
-
-
-/* EFECTO HOVER */
-
-QPushButton#SidebarButton:hover {
-    background-color: #263541;
-    color: #be3e3e;
-}
-
-
-/* BOTÓN SELECCIONADO */
-
-QPushButton#SidebarButton:checked {
-    background-color: #263f3b;
-    color: #48d597;
-
-    border-left: 3px solid #36b37e;
-
     font-weight: bold;
 }
 
 
-/* BOTÓN PRESIONADO */
+/* ==========================================
+   HOVER
+========================================== */
+
+QPushButton#SidebarButton:hover {
+    background-color: #eeeeee;
+    color: #000000;
+
+    border: 2px solid #111111;
+}
+
+
+/* ==========================================
+   BOTÓN SELECCIONADO
+========================================== */
+
+QPushButton#SidebarButton:checked {
+    background-color: #111111;
+    color: #ffffff;
+
+    border: 2px solid #111111;
+    border-radius: 10px;
+
+    font-weight: 900;
+}
+
+
+/* ==========================================
+   BOTÓN PRESIONADO
+========================================== */
 
 QPushButton#SidebarButton:pressed {
-    background-color: #304b45;
+    background-color: #444444;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   SCROLLBARS (POR SI LAS NECESITAS)
+========================================== */
+
+QScrollBar:vertical {
+    background: #ffffff;
+    width: 8px;
+    border: none;
+}
+
+QScrollBar::handle:vertical {
+    background: #111111;
+    border-radius: 4px;
+    min-height: 25px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #555555;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
 }
