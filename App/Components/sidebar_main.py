@@ -1,4 +1,6 @@
 
+from pathlib import Path
+
 from PySide6.QtWidgets import (
     QWidget,
     QVBoxLayout,
@@ -6,32 +8,40 @@ from PySide6.QtWidgets import (
     QLabel,
     QFrame
 )
+
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Signal, Qt
-path_logo = "App/Images/logo_joe.png"
+
+from App.Translations.translator import Translator
+
+
+BASE_DIR = Path(__file__).resolve().parent
+path_logo = BASE_DIR / "Images" / "logo_joe.png"
+
 
 class Sidebar(QWidget):
 
-    # Señal que comunica la sección seleccionada
     section_changed = Signal(str)
 
-    def __init__(self):
+    def __init__(self, translator=None):
         super().__init__()
+
+        self.translator = translator or Translator("en")
 
         self.setObjectName("Sidebar")
         self.setFixedWidth(250)
 
         self.buttons = {}
+        self.section_labels = {}
 
-        # Layout principal
         self.layout = QVBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setSpacing(6)
 
-        # LOGOTIPO Y NOMBRE
+        # HEADER
         self.create_header()
 
-        # Separador
+        # SEPARADOR
         separator = QFrame()
         separator.setObjectName("SidebarSeparator")
         separator.setFrameShape(QFrame.Shape.HLine)
@@ -39,26 +49,31 @@ class Sidebar(QWidget):
         self.layout.addWidget(separator)
         self.layout.addSpacing(15)
 
-        # MENÚ PRINCIPAL
-        self.add_section_title("MENÚ PRINCIPAL")
+        # MENU PRINCIPAL
+        self.add_section_title("menu_main")
 
-        self.add_menu_button("Pacientes", "patients", "♙")
-        self.add_menu_button("Alimentos", "foods", "◈")
-        self.add_menu_button("Dietas", "diets", "▤")
-        self.add_menu_button("Planes nutricionales", "plans", "▦")
+        self.add_menu_button("patients", "patients", "♙")
+        self.add_menu_button("foods", "foods", "◈")
+        self.add_menu_button("diets", "diets", "▤")
+        self.add_menu_button("plans", "plans", "▦")
 
         self.layout.addSpacing(20)
 
-        # GESTIÓN
-        self.add_section_title("GESTIÓN")
+        # GESTION
+        self.add_section_title("menu_management")
 
-        self.add_menu_button("Informes", "reports", "▧")
+        self.add_menu_button("reports", "reports", "▧")
 
         self.layout.addStretch()
 
-        # CONFIGURACIÓN
-        self.add_menu_button("Configuración", "settings", "⚙")
+        # CONFIGURACION
+        self.add_menu_button("settings", "settings", "⚙")
 
+        self.retranslate()
+
+    # ---------------------------------
+    # HEADER
+    # ---------------------------------
 
     def create_header(self):
 
@@ -69,38 +84,59 @@ class Sidebar(QWidget):
         header_layout.setContentsMargins(0, 0, 0, 0)
         header_layout.setSpacing(0)
 
-        logo = QLabel()
-        logo.setObjectName("SidebarLogo")
-        logo.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        logo.setFixedSize(250, 100)
+        self.logo = QLabel()
+        self.logo.setObjectName("SidebarLogo")
+        self.logo.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.logo.setFixedSize(250, 100)
 
-        logo.setPixmap(QPixmap(path_logo))
-        logo.setScaledContents(True)
+        pixmap = QPixmap(str(path_logo))
 
-        name = QLabel("NutriJoe")
-        name.setObjectName("SidebarBrand")
+        self.logo.setPixmap(
+            pixmap.scaled(
+                250,
+                100,
+                Qt.AspectRatioMode.KeepAspectRatio,
+                Qt.TransformationMode.SmoothTransformation
+            )
+        )
 
-        subtitle = QLabel("NUTRITION MANAGEMENT")
-        subtitle.setObjectName("SidebarSubtitle")
+        self.name = QLabel()
+        self.name.setObjectName("SidebarBrand")
 
-        header_layout.addWidget(logo, alignment=Qt.AlignmentFlag.AlignLeft)
+        self.subtitle = QLabel()
+        self.subtitle.setObjectName("SidebarSubtitle")
+
+        header_layout.addWidget(
+            self.logo,
+            alignment=Qt.AlignmentFlag.AlignLeft
+        )
+
         header_layout.addSpacing(5)
-        header_layout.addWidget(name)
-        header_layout.addWidget(subtitle)
+        header_layout.addWidget(self.name)
+        header_layout.addWidget(self.subtitle)
 
         self.layout.addWidget(header)
 
-    def add_section_title(self, title):
+    # ---------------------------------
+    # TITULOS DE SECCION
+    # ---------------------------------
 
-        label = QLabel(title)
+    def add_section_title(self, key):
+
+        label = QLabel()
         label.setObjectName("SidebarSectionTitle")
 
         self.layout.addWidget(label)
 
-    def add_menu_button(self, text, identifier, icon):
+        self.section_labels[key] = label
 
-        button = QPushButton(f"{icon}    {text}")
+    # ---------------------------------
+    # BOTONES
+    # ---------------------------------
 
+    def add_menu_button(self, text_key, identifier, icon):
+
+        button = QPushButton()
         button.setObjectName("SidebarButton")
         button.setCheckable(True)
         button.setCursor(Qt.CursorShape.PointingHandCursor)
@@ -112,19 +148,53 @@ class Sidebar(QWidget):
 
         self.layout.addWidget(button)
 
-        self.buttons[identifier] = button
+        self.buttons[identifier] = {
+            "button": button,
+            "text_key": text_key,
+            "icon": icon
+        }
+
+    # ---------------------------------
+    # TRADUCCIONES
+    # ---------------------------------
+
+    def retranslate(self):
+
+        tr = self.translator.tr
+
+        # HEADER
+        self.name.setText(tr("brand_name"))
+        self.subtitle.setText(tr("brand_subtitle"))
+
+        # TITULOS
+        for key, label in self.section_labels.items():
+            label.setText(tr(key))
+
+        # BOTONES
+        for identifier, data in self.buttons.items():
+
+            text = tr(data["text_key"])
+            icon = data["icon"]
+
+            data["button"].setText(f"{icon}    {text}")
+
+    def change_language(self, language):
+
+        self.translator.load_language(language)
+        self.retranslate()
+
+    # ---------------------------------
+    # SELECCION DE SECCION
+    # ---------------------------------
 
     def select_button(self, identifier):
 
         if identifier not in self.buttons:
             return
 
-        # Desmarcar todos los botones
-        for button in self.buttons.values():
-            button.setChecked(False)
+        for data in self.buttons.values():
+            data["button"].setChecked(False)
 
-        # Marcar el seleccionado
-        self.buttons[identifier].setChecked(True)
+        self.buttons[identifier]["button"].setChecked(True)
 
-        # Avisar a la ventana principal
         self.section_changed.emit(identifier)

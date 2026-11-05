@@ -15,7 +15,7 @@ QWidget {
 }
 
 QMainWindow {
-    background-color: #f5f7fa;
+    background-color: #1263dc;
 }
 
 
@@ -47,7 +47,7 @@ QLabel#SidebarLogo {
 }
 
 QLabel#SidebarBrand {
-    color: #ffffff;
+    color: #f82020;
     font-size: 24px;
     font-weight: bold;
 }
@@ -90,7 +90,7 @@ QLabel#SidebarSectionTitle {
 
 QPushButton#SidebarButton {
     background-color: transparent;
-    color: #aebbc9;
+    color: #2e78c7;
 
     border: none;
     border-radius: 8px;
@@ -107,7 +107,7 @@ QPushButton#SidebarButton {
 
 QPushButton#SidebarButton:hover {
     background-color: #263541;
-    color: #ffffff;
+    color: #be3e3e;
 }
 
 
