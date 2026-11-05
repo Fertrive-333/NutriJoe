@@ -1,0 +1,14 @@
+from PySide6.QtWidgets import QMainWindow, QLabel
+
+
+class MainWindow(QMainWindow):
+
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("NutriJoe")
+        self.resize(1200, 800)
+
+        self.setCentralWidget(
+            QLabel("¡Bienvenido a NutriJoe!")
+        )

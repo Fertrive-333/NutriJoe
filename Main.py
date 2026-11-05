@@ -1,28 +1,19 @@
 import sys
-from PySide6.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 
-# Crear la aplicación
-app = QApplication(sys.argv)
+from PySide6.QtWidgets import QApplication
+from App.Forms.main_window import MainWindow
 
-# Crear la ventana
-ventana = QWidget()
-ventana.setWindowTitle("Mi primera aplicación")
-ventana.resize(600, 400)
 
-# Crear el texto
-texto = QLabel("¡Hola Joe!")
+def main():
+    app = QApplication(sys.argv) #Inicia motor gráfico
 
-# Centrar el texto
-texto.setStyleSheet("font-size: 30px;")
-texto.setAlignment(__import__("PySide6.QtCore", fromlist=["Qt"]).Qt.AlignmentFlag.AlignCenter)
+    app.setApplicationName("NutriJoe")  #Da nombre
 
-# Colocar el texto en la ventana
-layout = QVBoxLayout()
-layout.addWidget(texto)
-ventana.setLayout(layout)
+    window = MainWindow() #Crea Main Windows
+    window.show() #Muestra la ventana main
 
-# Mostrar ventana
-ventana.show()
+    sys.exit(app.exec())
 
-# Mantener la aplicación abierta
-sys.exit(app.exec())
+
+if __name__ == "__main__":
+    main()
