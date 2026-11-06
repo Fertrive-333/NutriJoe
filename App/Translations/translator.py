@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-from PySide6.QtCore import QObject, Signal
+from PySide6.QtCore import QObject, Signal, QSettings
 
 
 class Translator(QObject):
@@ -18,6 +18,7 @@ class Translator(QObject):
         path = Path(__file__).resolve().parent / f"{language}.json"
         self._translations = json.loads(path.read_text(encoding="utf-8"))
         self.language = language
+        QSettings("NutriJoe", "NutriJoe").setValue("language", language)
         self.language_changed.emit()
 
     def t(self, key: str) -> str:

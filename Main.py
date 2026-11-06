@@ -3,6 +3,7 @@ import sys
 
 from pathlib import Path
 from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import QSettings
 
 from App.Forms.main_window import MainWindow
 from App.Translations.translator import Translator
@@ -27,7 +28,8 @@ def main():
     app.setStyleSheet(stylesheet_path.read_text(encoding="utf-8"))
 
     # Abrir ventana
-    translator = Translator("es")
+    saved = QSettings("NutriJoe", "NutriJoe").value("language", "es")
+    translator = Translator(saved)
     window = MainWindow(translator)
     window.show()
 

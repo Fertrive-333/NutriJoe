@@ -14,6 +14,7 @@ from App.Components.sidebar_main import Sidebar
 from App.Forms.dashboard_window import DashboardPage
 from App.Forms.patients_window import PatientsPage
 from App.Forms.foods_window import FoodsPage
+from App.Forms.settings_window import SettingsPage
 
 
 class MainWindow(QMainWindow):
@@ -39,6 +40,7 @@ class MainWindow(QMainWindow):
             "dashboard": DashboardPage(translator),
             "patients": PatientsPage(translator),
             "foods": FoodsPage(translator),
+            "settings": SettingsPage(translator)
         }
 
         for page in self.page_map.values():
