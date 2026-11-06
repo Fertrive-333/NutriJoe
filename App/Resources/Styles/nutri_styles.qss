@@ -24,7 +24,7 @@ QMainWindow {
 ========================================== */
 
 QWidget#Sidebar {
-    background-color: #ffffff;
+    background-color: #c7c7c7;
     min-width: 250px;
     max-width: 250px;
 
@@ -91,7 +91,7 @@ QLabel#SidebarSectionTitle {
 ========================================== */
 
 QPushButton#SidebarButton {
-    background-color: #ffffff;
+    background-color: #949494;
     color: #111111;
 
     border: 2px solid transparent;

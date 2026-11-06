@@ -5,13 +5,13 @@
     "menu_main": "MENÚ PRINCIPAL",
     "menu_management": "GESTIÓN",
 
+    "dashboard": "Gráficas",
     "patients": "Pacientes",
     "foods": "Alimentos",
     "diets": "Dietas",
     "plans": "Planes nutricionales",
     "reports": "Informes",
     "settings": "Configuración"
-
 
 
 }

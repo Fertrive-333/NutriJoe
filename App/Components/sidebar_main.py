@@ -23,11 +23,10 @@ class Sidebar(QWidget):
 
     section_changed = Signal(str)
 
-    def __init__(self, translator=None):
+    def __init__(self, translator):
         super().__init__()
 
-        self.translator = translator or Translator("en")
-
+        self.translator = translator
         self.setObjectName("Sidebar")
         self.setFixedWidth(250)
 
@@ -69,6 +68,7 @@ class Sidebar(QWidget):
         # CONFIGURACION
         self.add_menu_button("settings", "settings", "⚙")
 
+        self.translator.language_changed.connect(self.retranslate)
         self.retranslate()
 
     # ---------------------------------
@@ -160,28 +160,20 @@ class Sidebar(QWidget):
 
     def retranslate(self):
 
-        tr = self.translator.tr
+        t = self.translator.t
 
         # HEADER
-        self.name.setText(tr("brand_name"))
-        self.subtitle.setText(tr("brand_subtitle"))
+        self.name.setText(t("brand_name"))
+        self.subtitle.setText(t("brand_subtitle"))
 
         # TITULOS
         for key, label in self.section_labels.items():
-            label.setText(tr(key))
+            label.setText(t(key))
 
         # BOTONES
         for identifier, data in self.buttons.items():
-
-            text = tr(data["text_key"])
-            icon = data["icon"]
-
-            data["button"].setText(f"{icon}    {text}")
-
-    def change_language(self, language):
-
-        self.translator.load_language(language)
-        self.retranslate()
+            text = t(data["text_key"])
+            data["button"].setText(f"{data['icon']}    {text}")
 
     # ---------------------------------
     # SELECCION DE SECCION

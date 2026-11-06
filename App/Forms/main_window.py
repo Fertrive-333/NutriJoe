@@ -11,74 +11,51 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt
 
 from App.Components.sidebar_main import Sidebar
+from App.Forms.dashboard_window import DashboardPage
+from App.Forms.patients_window import PatientsPage
+from App.Forms.foods_window import FoodsPage
 
 
 class MainWindow(QMainWindow):
 
-    def __init__(self):
+    def __init__(self,translator):
         super().__init__()
+        self.setWindowTitle("NutriJoe") #Nombre de la app que sale arriba en la ventana de google
 
-        self.setWindowTitle("NutriJoe")
-
+        self.translator = translator
+        self.sidebar = Sidebar(translator)
         # CONTENEDOR PRINCIPAL
         central = QWidget()
         main_layout = QHBoxLayout(central)
-
-        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.setContentsMargins(0, 0, 0, 0) #margenes de lo de la izq respecto a la sidebar
         main_layout.setSpacing(0)
-
-        # SIDEBAR
-        self.sidebar = Sidebar()
 
         # CONTENIDO
         self.pages = QStackedWidget()
         self.pages.setObjectName("MainContent")
 
         # Crear páginas provisionales
-        self.sections = [
-            "dashboard",
-            "patients",
-            "foods",
-            "diets",
-            "plans",
-            "reports",
-            "settings"
-        ]
+        self.page_map = {
+            "dashboard": DashboardPage(translator),
+            "patients": PatientsPage(translator),
+            "foods": FoodsPage(translator),
+        }
 
-        for section in self.sections:
-
-            page = QWidget()
-            page_layout = QVBoxLayout(page)
-
-            title = QLabel(section.replace("_", " ").title())
-
-            title.setStyleSheet("""
-                font-size: 30px;
-                font-weight: bold;
-            """)
-
-            page_layout.addWidget(title)
-            page_layout.addStretch()
-
-            self.pages.addWidget(page)
+        for page in self.page_map.values():
+            self.pages.addWidget(page) #Crea las paginas
 
         # Conectar navegación
         self.sidebar.section_changed.connect(
             self.change_page
         )
 
-        # Añadir elementos
-        main_layout.addWidget(self.sidebar)
-        main_layout.addWidget(self.pages)
-
+        # Añadir elementos en la main_layout
+        main_layout.addWidget(self.sidebar) #Sidebar a la izq
+        main_layout.addWidget(self.pages) #Pagina a la derecha
         self.setCentralWidget(central)
-
         self.showMaximized()
 
-    def change_page(self, section):
-
-        if section in self.sections:
-
-            index = self.sections.index(section)
-
-            self.pages.setCurrentIndex(index)
+    def change_page(self, section: str):
+        page = self.page_map.get(section)
+        if page:
+            self.pages.setCurrentWidget(page)

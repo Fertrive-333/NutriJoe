@@ -5,15 +5,16 @@ from pathlib import Path
 from PySide6.QtWidgets import QApplication
 
 from App.Forms.main_window import MainWindow
+from App.Translations.translator import Translator
 
 
 def main():
 
-    app = QApplication(sys.argv)
+    app = QApplication(sys.argv) #Inicia grafica
 
-    app.setApplicationName("NutriJoe")
+    app.setApplicationName("NutriJoe") 
 
-    # Cargar stylesheet
+    # Path a estilos
     stylesheet_path = (
         Path(__file__).parent
         / "App"
@@ -22,11 +23,12 @@ def main():
         / "nutri_styles.qss"
     )
 
-    with open(stylesheet_path, "r", encoding="utf-8") as file:
-        app.setStyleSheet(file.read())
+    #Carga los estilos
+    app.setStyleSheet(stylesheet_path.read_text(encoding="utf-8"))
 
     # Abrir ventana
-    window = MainWindow()
+    translator = Translator("es")
+    window = MainWindow(translator)
     window.show()
 
     sys.exit(app.exec())
