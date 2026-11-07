@@ -13,6 +13,16 @@
     "reports": "Informes",
     "settings": "Configuración",
 
+
+    "add_patients":"Añadir Paciente +",
+    "add_patients_name":"Añadir Paciente",
+    "name":"Nombre",
+    "insert_name":"Inserta nombre",
+
+
+
+
+
     "language":"Idioma"
 
 }

@@ -181,3 +181,4 @@ QScrollBar::sub-line:vertical {
 #FlagButton:checked {
     border: 2px solid #4CAF50;
 }
+

@@ -9,7 +9,7 @@ from PySide6.QtCore import Qt, QSize
 
 FLAGS_DIR = Path(__file__).resolve().parent.parent / "Images"
 
-LANGUAGES = ["es", "en", "fr"]
+LANGUAGES = ["es", "en"]
 
 class SettingsPage(QWidget):
     def __init__(self,translator):
