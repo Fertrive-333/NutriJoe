@@ -7,7 +7,7 @@ from PySide6.QtCore import QSettings
 
 from App.Forms.main_window import MainWindow
 from App.Translations.translator import Translator
-
+from App.database import init_db
 
 def main():
 
@@ -30,6 +30,7 @@ def main():
     # Abrir ventana
     saved = QSettings("NutriJoe", "NutriJoe").value("language", "es")
     translator = Translator(saved)
+    init_db()
     window = MainWindow(translator)
     window.show()
 

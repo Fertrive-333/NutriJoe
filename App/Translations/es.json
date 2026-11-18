@@ -26,6 +26,13 @@
     "protein": "Proteínas",
     "carbs": "Carbohidratos",
     "fat": "Grasas",
+    "tlf":"Teléfono",
+
+    "gender":"Género",
+    "gender_m":"Masculino",
+    "gender_f":"Femenino",
+
+    "birthday":"Fecha de nacimiento",
 
     "language": "Idioma"
 }
