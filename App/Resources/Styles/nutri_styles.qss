@@ -182,3 +182,195 @@ QScrollBar::sub-line:vertical {
     border: 2px solid #4CAF50;
 }
 
+
+/* ==========================================
+   TÍTULOS DE PÁGINA
+========================================== */
+
+QLabel#PageTitle {
+    font-size: 28px;
+    font-weight: 900;
+    color: #111111;
+    padding: 4px 0px 12px 0px;
+}
+
+
+/* ==========================================
+   BOTÓN PRINCIPAL (PÁGINAS)
+========================================== */
+
+QPushButton#PrimaryButton {
+    background-color: #111111;
+    color: #ffffff;
+    border: 2px solid #111111;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton#PrimaryButton:hover {
+    background-color: #333333;
+    border-color: #333333;
+}
+
+QPushButton#PrimaryButton:pressed {
+    background-color: #555555;
+    border-color: #555555;
+}
+
+
+/* ==========================================
+   BUSCADOR DE ALIMENTOS
+========================================== */
+
+QLineEdit#SearchInput {
+    background-color: #ffffff;
+    border: 2px solid #111111;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #111111;
+}
+
+QLineEdit#SearchInput:focus {
+    border: 2px solid #444444;
+    background-color: #ffffff;
+}
+
+
+/* ==========================================
+   LISTA DE ALIMENTOS
+========================================== */
+
+QListWidget#FoodList {
+    background-color: #ffffff;
+    border: 2px solid #111111;
+    border-radius: 12px;
+    padding: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+QListWidget#FoodList::item {
+    background-color: #f7f7f7;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 2px;
+    color: #111111;
+}
+
+QListWidget#FoodList::item:hover {
+    background-color: #eeeeee;
+    border: 1px solid #111111;
+}
+
+QListWidget#FoodList::item:selected {
+    background-color: #111111;
+    color: #ffffff;
+    border: 1px solid #111111;
+}
+
+
+/* ==========================================
+   DIÁLOGO AÑADIR ALIMENTO
+========================================== */
+
+QDialog#AddFoodDialog {
+    background-color: #f5f5f5;
+}
+
+QLabel#DialogTitle {
+    font-size: 22px;
+    font-weight: 900;
+    color: #111111;
+    padding-bottom: 4px;
+}
+
+QDialog#AddFoodDialog QLabel {
+    font-size: 14px;
+    font-weight: bold;
+    color: #222222;
+}
+
+QDialog#AddFoodDialog QLineEdit,
+QDialog#AddFoodDialog QDoubleSpinBox {
+    background-color: #ffffff;
+    border: 2px solid #111111;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 14px;
+    color: #111111;
+    selection-background-color: #111111;
+    selection-color: #ffffff;
+}
+
+QDialog#AddFoodDialog QLineEdit:focus,
+QDialog#AddFoodDialog QDoubleSpinBox:focus {
+    border: 2px solid #444444;
+    background-color: #ffffff;
+}
+
+QDialog#AddFoodDialog QDoubleSpinBox::up-button,
+QDialog#AddFoodDialog QDoubleSpinBox::down-button {
+    background-color: #f0f0f0;
+    border-left: 1px solid #cccccc;
+    width: 18px;
+}
+
+QDialog#AddFoodDialog QDoubleSpinBox::up-button:hover,
+QDialog#AddFoodDialog QDoubleSpinBox::down-button:hover {
+    background-color: #e0e0e0;
+}
+
+QDialog#AddFoodDialog QDialogButtonBox {
+    padding-top: 6px;
+}
+
+QPushButton#PrimaryDialogButton {
+    background-color: #111111;
+    color: #ffffff;
+    border: 2px solid #111111;
+    border-radius: 8px;
+    padding: 8px 18px;
+    min-width: 100px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton#PrimaryDialogButton:hover {
+    background-color: #333333;
+    border-color: #333333;
+}
+
+QPushButton#PrimaryDialogButton:pressed {
+    background-color: #555555;
+    border-color: #555555;
+}
+
+QPushButton#PrimaryDialogButton:disabled {
+    background-color: #bdbdbd;
+    color: #f0f0f0;
+    border: 2px solid #bdbdbd;
+}
+
+QPushButton#SecondaryDialogButton {
+    background-color: #ffffff;
+    color: #111111;
+    border: 2px solid #111111;
+    border-radius: 8px;
+    padding: 8px 18px;
+    min-width: 100px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton#SecondaryDialogButton:hover {
+    background-color: #eeeeee;
+}
+
+QPushButton#SecondaryDialogButton:pressed {
+    background-color: #dddddd;
+}
+

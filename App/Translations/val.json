@@ -1,0 +1,31 @@
+{
+    "brand_name": "NutriJoe",
+    "brand_subtitle": "GESTIÓ DE NUTRICIÓ",
+
+    "menu_main": "MENÚ PRINCIPAL",
+    "menu_management": "GESTIÓ",
+
+    "dashboard": "Gràfiques",
+    "patients": "Pacients",
+    "foods": "Aliments",
+    "diets": "Dietes",
+    "plans": "Plans nutricionals",
+    "reports": "Informes",
+    "settings": "Configuració",
+
+    "add_patients": "Afegir pacient +",
+    "add_patients_name": "Afegir pacient",
+    "name": "Nom",
+    "insert_name": "Insereix nom",
+
+    "add_food_manual": "Afegir aliment manualment",
+    "add_food_title": "Afegir aliment",
+    "insert_food_name": "Insereix nom de l'aliment",
+    "search_food": "Cerca aliment...",
+    "calories": "Calories",
+    "protein": "Proteïnes",
+    "carbs": "Carbohidrats",
+    "fat": "Greixos",
+
+    "language": "Idioma"
+}

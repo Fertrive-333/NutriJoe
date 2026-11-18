@@ -13,16 +13,19 @@
     "reports": "Informes",
     "settings": "Configuración",
 
+    "add_patients": "Añadir Paciente +",
+    "add_patients_name": "Añadir Paciente",
+    "name": "Nombre",
+    "insert_name": "Inserta nombre",
 
-    "add_patients":"Añadir Paciente +",
-    "add_patients_name":"Añadir Paciente",
-    "name":"Nombre",
-    "insert_name":"Inserta nombre",
+    "add_food_manual": "Añadir alimento manualmente",
+    "add_food_title": "Añadir alimento",
+    "insert_food_name": "Inserta nombre del alimento",
+    "search_food": "Buscar alimento...",
+    "calories": "Calorías",
+    "protein": "Proteínas",
+    "carbs": "Carbohidratos",
+    "fat": "Grasas",
 
-
-
-
-
-    "language":"Idioma"
-
+    "language": "Idioma"
 }

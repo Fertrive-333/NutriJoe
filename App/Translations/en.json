@@ -13,5 +13,19 @@
     "reports": "Reports",
     "settings": "Settings",
 
-    "language":"Language"
+    "add_patients": "Add Patient +",
+    "add_patients_name": "Add Patient",
+    "name": "Name",
+    "insert_name": "Enter name",
+
+    "add_food_manual": "Add food manually",
+    "add_food_title": "Add food",
+    "insert_food_name": "Enter food name",
+    "search_food": "Search food...",
+    "calories": "Calories",
+    "protein": "Protein",
+    "carbs": "Carbs",
+    "fat": "Fat",
+
+    "language": "Language"
 }
