@@ -17,7 +17,17 @@
     "add_patients":"Añadir Paciente +",
     "add_patients_name":"Añadir Paciente",
     "name":"Nombre",
-    "insert_name":"Inserta nombre",
+    "insert_name":"ej: Juan Pérez",
+
+    "tlf":"Teléfono",
+
+    "gender":"Género",
+    "gender_m":"Masculino",
+    "gender_f":"Femenino",
+
+    "birthday":"Fecha de nacimiento",
+
+    
 
 
 
