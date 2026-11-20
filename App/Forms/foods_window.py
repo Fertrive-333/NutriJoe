@@ -6,6 +6,8 @@ from PySide6.QtWidgets import (
     QListWidget
 )
 
+import App.database as db
+
 
 class AddFoodDialog(QDialog):
     def __init__(self, translator, parent=None):
@@ -130,12 +132,21 @@ class FoodsPage(QWidget):
 
         self.translator.language_changed.connect(self.retranslate_ui)
         self.retranslate_ui()
+        self.foods = db.get_all_foods()
+        self._refresh_food_list()
 
     def open_add_dialog(self):
         dialog = AddFoodDialog(self.translator, self)
         if dialog.exec() == QDialog.Accepted:
             data = dialog.food_data()
-            self.foods.append(data)
+            db.add_food(
+                data["name"],
+                data["calories"],
+                data["protein"],
+                data["carbs"],
+                data["fat"],
+            )
+            self.foods = db.get_all_foods()
             self.food_added.emit(data)
             self._refresh_food_list()
 
