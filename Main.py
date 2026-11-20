@@ -1,4 +1,4 @@
-
+import ctypes
 import sys
 
 from pathlib import Path
@@ -8,11 +8,17 @@ from PySide6.QtCore import QSettings
 from App.Forms.main_window import MainWindow
 from App.Translations.translator import Translator
 from App.database import init_db
+from PySide6.QtGui import QIcon
 
+ICON_PATH = Path(__file__).resolve().parent / "App" / "Images" / "icon.ico"
 def main():
 
-    app = QApplication(sys.argv) #Inicia grafica
 
+    if sys.platform == "win32":
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("nutrijoe.app")
+    
+    app = QApplication(sys.argv) #Inicia grafica
+    app.setWindowIcon(QIcon(str(ICON_PATH)))
     app.setApplicationName("NutriJoe") 
 
     # Path a estilos
