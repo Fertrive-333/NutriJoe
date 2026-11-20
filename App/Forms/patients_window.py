@@ -7,8 +7,7 @@ from PySide6.QtWidgets import (
 )
 import App.database as db
 
-
-# Ventana flotante de añadir paciente
+#Ventana flotante de añadir paciente
 class AddPatientDialog(QDialog):
     def __init__(self, translator, parent=None):
         super().__init__(parent)
@@ -37,14 +36,14 @@ class AddPatientDialog(QDialog):
         self.tlf_input = QLineEdit()
         layout.addWidget(self.tlf_input)
 
-        # Gender
+        #Gender
         layout.addWidget(QLabel(translator.t("gender")))
         self.gender_input = QComboBox()
         self.gender_input.addItem(translator.t("gender_m"), "M")
         self.gender_input.addItem(translator.t("gender_f"), "F")
         layout.addWidget(self.gender_input)
 
-        # Birthday
+        #Birthday
         layout.addWidget(QLabel(translator.t("birthday")))
         self.birthday_input = QDateEdit()
         self.birthday_input.setCalendarPopup(True)
@@ -80,12 +79,12 @@ class AddPatientDialog(QDialog):
 
     def patient_name(self):
         return self.name_input.text().strip()
-
+    
     def patient_tlf(self):
         return self.tlf_input.text().strip()
 
     def patient_gender(self):
-        return self.gender_input.currentData()  # "M", "F"
+        return self.gender_input.currentData()   # "M", "F"
 
     def patient_birthday(self):
         return self.birthday_input.date().toString("yyyy-MM-dd")
