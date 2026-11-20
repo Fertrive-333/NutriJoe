@@ -58,3 +58,9 @@ def get_all_foods():
             "SELECT id, name, calories, protein, carbs, fat FROM foods ORDER BY name COLLATE NOCASE"
         ).fetchall()
         return [dict(row) for row in rows]
+    
+def get_patients():
+    with get_connection() as conn:
+        return conn.execute(
+            "SELECT id, name, tlf, gender, birthday FROM patients"
+        ).fetchall()
