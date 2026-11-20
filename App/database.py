@@ -26,3 +26,9 @@ def add_patient(name, tlf=None, gender=None, birthday=None):
             "INSERT INTO patients (name, tlf, gender, birthday) VALUES (?, ?, ?, ?)",
             (name, tlf, gender, birthday),
         )
+
+def get_patients():
+    with get_connection() as conn:
+        return conn.execute(
+            "SELECT id, name, tlf, gender, birthday FROM patients"
+        ).fetchall()

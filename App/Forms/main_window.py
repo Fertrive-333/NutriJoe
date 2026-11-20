@@ -28,7 +28,7 @@ class MainWindow(QMainWindow):
         # CONTENEDOR PRINCIPAL
         central = QWidget()
         main_layout = QHBoxLayout(central)
-        main_layout.setContentsMargins(0, 0, 0, 0) #margenes de lo de la izq respecto a la sidebar
+        main_layout.setContentsMargins(10, 0, 0, 0) #margenes de lo de la izq respecto a la sidebar
         main_layout.setSpacing(0)
 
         # CONTENIDO
